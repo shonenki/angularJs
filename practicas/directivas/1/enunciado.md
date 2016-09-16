@@ -5,18 +5,18 @@ Se requiere se desarrolle una página estática que represente el contenido prot
 Los articulos a mostrar en el menu son los siguientes:
 
 - Hamburguesas
-    - Normal -> 2500
-    - Especial -> 3500
-    - Full Equipo -> 4000
+    - Normal -> 2500 Bs.
+    - Especial -> 3500 Bs.
+    - Full Equipo -> 4000 Bs.
 
 - Perros calientes
-    - Normal -> 1500
-    - Especial -> 2000
-    - Full Equipo -> 2500
+    - Normal -> 1500 Bs.
+    - Especial -> 2000 Bs.
+    - Full Equipo -> 2500 Bs.
 
 - Bebidas
-    - Normal -> 800
-    - Mediana -> 1200
-    - Grande -> 1600
+    - Normal -> 800 Bs.
+    - Mediana -> 1200 Bs.
+    - Grande -> 1600 Bs.
 
 No se requiere estilizado especial, solo quieren validarse a través del uso de angularJs los conceptos de negocio de la aplicación.
