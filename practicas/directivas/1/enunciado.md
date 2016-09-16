@@ -4,6 +4,8 @@ Se requiere se desarrolle una página estática que represente el contenido prot
 
 Los articulos a mostrar en el menu son los siguientes:
 
+Menu La Cola Feliz
+
 - Hamburguesas
     - Normal -> 2500 Bs.
     - Especial -> 3500 Bs.
@@ -20,3 +22,5 @@ Los articulos a mostrar en el menu son los siguientes:
     - Grande -> 1600 Bs.
 
 No se requiere estilizado especial, solo quieren validarse a través del uso de angularJs los conceptos de negocio de la aplicación.
+
+La finalidad de este ejercicio es que se desarrolle un elemento personalizado llamado 'menu' donde se encuentre el codigo html que represente el menu de la especificaciòn.
