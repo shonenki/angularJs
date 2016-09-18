@@ -10,7 +10,7 @@
             scope: {},
             templateUrl: 'elementos/menu/referencia/plantilla.html'
         }
-    }]).service('servicioDeMenu', function () {
+    }]).factory('servicioDeMenu', function () {
         var menu = [
             {
                 nombre: 'Hamburguesas',
@@ -66,10 +66,14 @@
             },
         ]
 
-        this.obtenerEspecialidades = function () {
+        function obtenerEspecialidades() {
             return menu.filter(function (especialidad) {
                 return especialidad.activo
             });
+        }
+
+        return {
+            obtenerEspecialidades: obtenerEspecialidades
         }
     });
 })();
