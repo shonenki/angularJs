@@ -4,7 +4,7 @@
 
 
 <div class="menu" ng-repeat="especialidad in ctrl.obtenerEspecialidades()">
-    <div class="especialidad">
+    <div class="especialidad" ng-if="especialidad.activo">
         <h2>{{especialidad.nombre}}</h2>
         <div ng-repeat="tipo in especialidad.tipos">
             <div>
