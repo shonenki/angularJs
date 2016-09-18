@@ -42,3 +42,11 @@ El cliente esta satisfecho con la aplicación, mas siendo personas que manejan r
 Dado que la construcción de una interfaz completa para el manejo de esta información tomaría mucho tiempo, se llego a la conclusión que un archivo json puede suplir esa necesidad por el momento.
 
 Ahora es necesario implementar la funcionalidad de leer los datos del menu desde un archivo json.
+
+# Practica 4
+
+El momento llego, es necesario realizar la interfaz para insertar especialidades al menu, asi como activar y desactivar las especialidades existentes.
+
+Se requiere una vista aparte que contenga la funcionalidad para agregar nuevas especialidades al menu y activar o desactivar especialidades.
+
+El equipo de backend ha creado un servicio, los detalles del mismo se le daran al momento del desarrollo, pero el archivo que retorna y espera para su funcionamiento es el mismo que se encuentra en el archivo json.
