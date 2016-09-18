@@ -60,7 +60,9 @@
                 ]
 
                 this.obtenerEspecialidades = function () {
-                    return menu;
+                    return menu.filter(function(especialidad){
+                        return especialidad.activo
+                    });
                 }                
             },
             restrict: 'E',
