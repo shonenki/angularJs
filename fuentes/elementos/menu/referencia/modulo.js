@@ -20,7 +20,8 @@
                                 nombre: 'Full Equipo',
                                 precio: 4000
                             }
-                        ]
+                        ],
+                        activo:true
                     }, {
                         nombre: 'Perros Calientes',
                         tipos: [
@@ -36,7 +37,8 @@
                                 nombre: 'Full Equipo',
                                 precio: 2500
                             }
-                        ]
+                        ],
+                        activo:false
                     }, {
                         nombre: 'Bebidas',
                         tipos: [
@@ -52,7 +54,8 @@
                                 nombre: 'Grande',
                                 precio: 1600
                             }
-                        ]
+                        ],
+                        activo:true
                     },
                 ]
 
