@@ -34,3 +34,11 @@ Luego de observar las primeras implementaciones, el cliente requiere se le permi
 No es necesario crear una interfaz de usuario para este requerimiento, solo se necesita se brinde la funcionalidad.
 
 Como prueba debe desactivarse y activarse, sin cambiar el codigo de las plantillas, el menu de perros calientes. 
+
+# Practica 3
+
+El cliente esta satisfecho con la aplicación, mas siendo personas que manejan restaurantes, no se sienten muy convencidos con el hecho de tener que modificar un js para poder activar y agregar nuevas especialidades al menu.
+
+Dado que la construcción de una interfaz completa para el manejo de esta información tomaría mucho tiempo, se llego a la conclusión que un archivo json puede suplir esa necesidad por el momento.
+
+Ahora es necesario implementar la funcionalidad de leer los datos del menu desde un archivo json.
