@@ -4,7 +4,24 @@
             bindToController: true,
             controllerAs: 'ctrl',
             controller: function (servicioDeMenu) {
-                this.obtenerEspecialidades = servicioDeMenu.obtenerEspecialidades;
+                var vm = this;
+                var menu = servicioDeMenu.obtenerEspecialidades();
+                this.menu = menu;
+                this.activarEdicion = function () { return vm.editable = true };
+                this.desactivarEdicion = function () { return vm.editable = false };
+                this.resetEspecialidad = function (indiceDeEspecialidadEnMenu) {
+                    var especialidad = especialidades[indiceDeEspecialidadEnMenu];
+                    especialidad.nombre = '';
+                    for (var i = 0; i < especialidad.tipos.length; i++) {
+                        especialidad.tipos[i].nombre = '';
+                        especialidad.tipos[i].precio = ''
+                    }
+                };
+                this.actualizarMenu = function (menuActualizado) {
+                    servicioDeMenu.actualizarMenu(menuActualizado);
+                    menu = menuActualizado;
+                    this.editable=false;
+                }
             },
             restrict: 'E',
             scope: {},
@@ -26,8 +43,13 @@
             });
         }
 
+        function actualizarMenu(menuActualizado) {
+            menu = menuActualizado;
+        }
+
         return {
-            obtenerEspecialidades: obtenerEspecialidades
+            obtenerEspecialidades: obtenerEspecialidades,
+            actualizarMenu: actualizarMenu
         }
     }]);
 })();

@@ -2,17 +2,47 @@
     <h1>Menu Restaurant La Cola Feliz</h1>
 </div>
 
-
-<div class="menu" ng-repeat="especialidad in ctrl.obtenerEspecialidades()">
-    <div class="especialidad">
-        <h2>{{especialidad.nombre}}</h2>
-        <div ng-repeat="tipo in especialidad.tipos">
-            <div>
-                <p style="display: inline">{{tipo.nombre}}</p> &nbsp;&nbsp;
-                <p style="display: inline">--></p> &nbsp;&nbsp;
-                <p style="display: inline">{{tipo.precio}} Bs.</p>
+<div ng-if="!ctrl.editable">
+    <div class="menu" ng-repeat="especialidad in ctrl.menu">
+        <div class="especialidad">
+            <h2>{{especialidad.nombre}}</h2>
+            <div ng-repeat="tipo in especialidad.tipos">
+                <div>
+                    <p style="display: inline">{{tipo.nombre}}</p> &nbsp;&nbsp;
+                    <p style="display: inline">--></p> &nbsp;&nbsp;
+                    <p style="display: inline">{{tipo.precio}} Bs.</p>
+                </div>
             </div>
         </div>
     </div>
+    <br></br>
+    <input ng-show="!ctrl.editable" type="button" ng-click="ctrl.activarEdicion()" value="Activar edición" />
+</div>
 
+<div ng-if="ctrl.editable">
+    <form>
+        <div class="menu" ng-repeat="especialidad in ctrl.menu">
+            <div class="especialidad">
+                <fieldset>
+                    <label for="especialidad-nombre-{{$index}}">Nombre de especialidad</label>
+                    <input id="especialidad-nombre-{{$index}}" ng-model="ctrl.menu[$index].nombre" type="text" value="{{especialidad.nombre}}">
+                    <div ng-repeat="tipo in especialidad.tipos">
+                        <label for="{{especialidad.nombre}}-tipo-nombre-{{$index}}">Nombre de tipo</label>
+                        <input id="{{especialidad.nombre}}-tipo-nombre-{{$index}}" type="text" style="display: inline" ng-model="ctrl.menu[$parent.$index].tipos[$index].nombre"
+                            value="{{tipo.nombre}}"> &nbsp;&nbsp;
+                        <p style="display: inline">--></p> &nbsp;&nbsp;
+                        <label for="{{especialidad.nombre}}-tipo-nombre-{{$index}}">Precio</label>
+                        <input id="{{especialidad.nombre}}-tipo-nombre-{{$index}}" type="text" style="display: inline" ng-model="ctrl.menu[$parent.$index].tipos[$index].precio"
+                            value="{{tipo.precio}}">
+                    </div>
+                    <br>
+                    <input type="button" ng-click="ctrl.resetEspecialidad($index)" value="Reset especialidad" />
+                </fieldset>
+            </div>
+            <br></br>
+            <br></br>
+        </div>
+        <input type="button" ng-click="ctrl.desactivarEdicion()" value="Desactivar edición" style="display: inline" />
+        <input type="submit" ng-click="ctrl.actualizarMenu(ctrl.menu)" value="Actualizar menu" style="display: inline" />
+    </form>
 </div>

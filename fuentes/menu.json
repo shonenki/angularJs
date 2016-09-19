@@ -22,7 +22,7 @@
         "tipos": [
             {
                 "nombre": "Normal",
-                "precio": 1500
+                "precio": 1800
             },
             {
                 "nombre": "Especial",
@@ -33,7 +33,7 @@
                 "precio": 2500
             }
         ],
-        "activo": false
+        "activo": true
     },
     {
         "nombre": "Bebidas",
