@@ -1,23 +1,17 @@
+<div>
+    <h1>Menu Restaurant La Cola Feliz</h1>
+</div>
 
-        <h1><b>Menú - La Cola Feliz</b></h1>
-        
-        <h3>Hamburguesas</h3>
-        <ul>
-            <li>Normal -> 2.500,00</li>
-            <li>Especial -> 3.500,00</li>
-            <li>Full Equipo -> 4.000,00</li>
-        </ul>
-        
-        <h3>Perro Caliente</h3>
-        <ul>
-            <li>Normal -> 1.500,00</li>
-            <li>Especial -> 2.000,00</li>
-            <li>Full Equipo -> 2.500,00</li>
-        </ul>
-        
-        <h3>Bebidas</h3>
-        <ul>
-            <li>Normal -> 800,00</li>
-            <li>Mediana -> 1.200,00</li>
-            <li>Grande -> 1.600,00</li>
-        </ul>
+
+<div class="menu" ng-repeat="especialidad in ctrl.obtenerEspecialidades()">
+    <div class="especialidad">
+        <h2>{{especialidad.nombre}}</h2>
+        <div ng-repeat="tipo in especialidad.tipos">
+            <div>
+                <p style="display: inline">{{tipo.nombre}}</p> &nbsp;&nbsp;
+                <p style="display: inline">--></p> &nbsp;&nbsp;
+                <p style="display: inline">{{tipo.precio}} Bs.</p>
+            </div>
+        </div>
+    </div>
+</div>
