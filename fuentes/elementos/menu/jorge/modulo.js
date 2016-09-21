@@ -15,7 +15,7 @@
                     menu = data;
                 });
 
-                this.obtenerEspecialidades = function () {
+                this.obtenerEspecialidades = function () { 
                     //También es posible usar menu.filter que hace lo mismo que tengo acá a través de JS (investigar)
                     /*var arr_menu = [];
                     for (i = 0; i < menu.length; i++) { 
@@ -23,7 +23,6 @@
                             arr_menu[i] = menu[i];
                         }
                     }*/
-                    console.log(menu);
                     return menu;
                 }  
                 
