@@ -1,0 +1,26 @@
+{
+    "0":{ 
+        "nombre": "Hamburguesas",
+        "tipos": {
+            "nombre": ["Normal", "Especial", "Full Equipo"],
+            "precio": ["2500", "3500", "4000"]
+        },
+        "activo": true
+    },
+    "1":{
+        "nombre": "Perros Calientes",
+        "tipos": {
+            "nombre": ["Normal", "Especial", "Full Equipo"],
+            "precio": ["1500", "2000", "2500"]
+        },
+        "activo": false
+    },
+    "2":{
+        "nombre": "Bebidas",
+        "tipos": {
+            "nombre": ["Normal", "Mediano", "Grande"],
+            "precio": ["800", "1200", "1600"]
+        },
+        "activo": true
+    }
+}

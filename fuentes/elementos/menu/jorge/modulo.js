@@ -7,74 +7,26 @@
         return{
             BindtoController: true,
             controllerAs: 'ctrl',
-            controller: function(){
+            controller: function($http){
                 //Se define lógica de negocios en este ejemplo para entender el funcionamiento, pero en realidad debe ir en un servicio
-                //Que es llamado desde el controladorw
-                var menu = [
-                    {
-                        nombre: 'Hamburguesas',
-                        tipos: [
-                            {
-                                nombre: 'Normal',
-                                precio: 2500
-                            },
-                            {
-                                nombre: 'Especial',
-                                precio: 3500
-                            },
-                            {
-                                nombre: 'Full Equipo',
-                                precio: 4000
-                            }
-                        ],
-                        activo:true
-                    }, {
-                        nombre: 'Perros Calientes',
-                        tipos: [
-                            {
-                                nombre: 'Normal',
-                                precio: 1500
-                            },
-                            {
-                                nombre: 'Especial',
-                                precio: 2000
-                            },
-                            {
-                                nombre: 'Full Equipo',
-                                precio: 2500
-                            }
-                        ],
-                        activo:false
-                    }, {
-                        nombre: 'Bebidas',
-                        tipos: [
-                            {
-                                nombre: 'Normal',
-                                precio: 800
-                            },
-                            {
-                                nombre: 'Mediano',
-                                precio: 1200
-                            },
-                            {
-                                nombre: 'Grande',
-                                precio: 1600
-                            }
-                        ],
-                        activo:true
-                    },
-                ]
+                //Que es llamado desde el controlador
+                menu = "";
+                $http.get('elementos/menu/jorge/menu.json').success(function (data){
+                    menu = data;
+                });
 
                 this.obtenerEspecialidades = function () {
                     //También es posible usar menu.filter que hace lo mismo que tengo acá a través de JS (investigar)
-                    var arr_menu = [];
+                    /*var arr_menu = [];
                     for (i = 0; i < menu.length; i++) { 
                         if(menu[i].activo == true){
                             arr_menu[i] = menu[i];
                         }
-                    }
-                    return arr_menu;
+                    }*/
+                    console.log(menu);
+                    return menu;
                 }  
+                
             },
             restrict: 'E', //4
             templateUrl: 'elementos/menu/jorge/plantilla.html',
