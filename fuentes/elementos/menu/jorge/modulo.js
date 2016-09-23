@@ -10,9 +10,9 @@
             controller: function($http){
                 //Se define lógica de negocios en este ejemplo para entender el funcionamiento, pero en realidad debe ir en un servicio
                 //Que es llamado desde el controlador
-                menu = "";
-                $http.get('elementos/menu/jorge/menu.json').success(function (data){
-                    menu = data;
+                var menu;
+                $http.get('elementos/menu/jorge/menu.json').then(function (datos){ 
+                    menu = datos.data;
                 });
 
                 this.obtenerEspecialidades = function () { 
@@ -24,8 +24,7 @@
                         }
                     }*/
                     return menu;
-                }  
-                
+                }   
             },
             restrict: 'E', //4
             templateUrl: 'elementos/menu/jorge/plantilla.html',
