@@ -7,11 +7,9 @@
     <div class="especialidad">
         <h2>{{especialidad.nombre}}</h2>
         <div ng-repeat="tipo in especialidad.tipos">
-            <div>
-                <p style="display: inline">{{tipo.nombre}}</p> &nbsp;&nbsp;
-                <p style="display: inline">--></p> &nbsp;&nbsp;
-                <p style="display: inline">{{tipo.precio}} Bs.</p>
-            </div>
+            <ul>
+                <li>{{tipo.nombre}} => {{tipo.precio}} Bs.</li>
+            </ul>
         </div>
     </div>
 </div>
