@@ -1,43 +1,39 @@
 //1
 (function (angular){
     //2
-    angular.module('LaColaFeliz',[
-      
-    ]).directive('menu', function(){ //3
+    angular.module('LaColaFeliz',[]).directive('menu', function(){ //3
         return{
             BindtoController: true,
-            controllerAs: 'ctrl',
-            controller: function($http){
-                //Se define lógica de negocios en este ejemplo para entender el funcionamiento, pero en realidad debe ir en un servicio
-                //Que es llamado desde el controlador
-                var menu;
-                $http.get('elementos/menu/jorge/menu.json').then(function (datos){ 
-                    menu = datos.data;
-                });
+            controllerAs: 'menuVm',
+            controller: function(servicioDeMenu){
+                //activarControlador();
+                menuVm = this;
+                //function activarControlador(){
+                    //Se hace una promesa de devolución de resultado del objeto que se retorna desde el factory
+                    servicioDeMenu.listarEspecialidades().then(function(resultado){
+                        //Retorna a la plantilla para ser leída con ng-repeat
+                        return menuVm.menu = resultado.data;
 
-                this.obtenerEspecialidades = function () { 
-                    //También es posible usar menu.filter que hace lo mismo que tengo acá a través de JS (investigar)
-                    /*var arr_menu = [];
-                    for (i = 0; i < menu.length; i++) { 
-                        if(menu[i].activo == true){
-                            arr_menu[i] = menu[i];
-                        }
-                    }*/
-                    return menu;
-                }   
+                        //Se utiliza el filter de JS (revisar con Guillermo, no funciona)
+                        /*menuVm.menu=resultado.data.filter(function(especialidad){
+                            return especialidad.activo;
+                        });*/
+                    }); 
+                //}
+                    
             },
             restrict: 'E', //4
             templateUrl: 'elementos/menu/jorge/plantilla.html',
-            scope: {} //6
-            //controller: function($scopre){
-                //5
-                //$scope.menu = {
-
-                //}
-
-            }
-    });
-    
+            scope: {} //5 y 6
+        }
+    }).factory("servicioDeMenu", function($http){ //Inyecto el servicio $http de Angular
+        //Creo una función que se llama desde el contrlador que leerá el JSON
+        function listarEspecialidades(){
+            return  $http.get('elementos/menu/jorge/menu.json');
+        }
+        //Retorna una variable que es igual al resultado de la función
+        return {listarEspecialidades:listarEspecialidades}
+    });    
 })(angular);
 
 
@@ -78,3 +74,5 @@
 //menu.filter (función de JavaScript para permitir filtrar elementos de un arreglo)
 //Definir fronteras es la finalidad de la Arquitectura de Software
 // Directivas - Controladores - Servicios
+//El factory devuelve un objeto, los servicios devuelven una función constructora.
+//Los servicios propios de AngularJS incluyen $. Ej: $http, $log.

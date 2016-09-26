@@ -3,7 +3,7 @@
 </div>
 
 
-<div class="menu" ng-repeat="especialidad in ctrl.obtenerEspecialidades()">
+<div class="menu" ng-repeat="especialidad in menuVm.menu">
     <div class="especialidad">
         <h2>{{especialidad.nombre}}</h2>
         <div ng-repeat="tipo in especialidad.tipos">
