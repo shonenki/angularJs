@@ -4,7 +4,7 @@
 
 <!-- Plantilla de Menu (Vista) -->
 <div class="menu" ng-repeat="especialidad in menuVm.menu" ng-if="!menuVm.flagEditaMenu">
-    <div class="especialidad">
+    <div class="especialidad" ng-show="{{especialidad.activo}}">
         <h2>{{especialidad.nombre}}</h2>
         <div ng-repeat="tipo in especialidad.tipos">
             <ul>
@@ -21,16 +21,17 @@
 <!-- Plantilla de Menu (Editable) -->
 <div class="menu" ng-repeat="especialidad in menuVm.menu" ng-if="menuVm.flagEditaMenu">
     <div class="especialidad">
-        <input type="text" value="{{especialidad.nombre}}" />
+        <input type="text" value="{{especialidad.nombre}}" ng-model="especialidad.nombre" />
         <div ng-repeat="tipo in especialidad.tipos">
             <!-- el ng-model en cada caso permite la modificación del resultado impreso a través de Angular -->
             <ul>
                 <li><input type="text" value="{{tipo.nombre}}" ng-model="tipo.nombre" /> => 
                     <input type="text" value="{{tipo.precio}}" ng-model="tipo.precio" /> Bs. 
-                    | <input type="checkbox" />
                 </li>
             </ul>
         </div>
+        <div><input type="checkbox" ng-checked="{{especialidad.activo}}" ng-model="especialidad.activo" /> Activo</div>
+        <br/>
     </div>
 </div>
 

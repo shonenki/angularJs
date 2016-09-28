@@ -8,19 +8,16 @@
             controller: function(servicioDeMenu){
                 vm = this;
                 vm.flagEditaMenu = false;
-                var menu;
-                
                 
                 //Funciones para el flag que cambia el menú a partir del resultado booleano al ng-if
                 vm.editarMenu = function(){ vm.flagEditaMenu = true; };
                 vm.vistaMenu = function(){ vm.flagEditaMenu = false; };
   
-                    //Se hace una promesa de devolución de resultado del objeto que se retorna desde el factory           
-                    servicioDeMenu.listarEspecialidades().then(function(resultado){
-                        //Retorna a la plantilla para ser leída con ng-repeat
-                        menu=resultado.data;
-                        return menu;
-                    });
+                //Se hace una promesa de devolución de resultado del objeto que se retorna desde el factory           
+                servicioDeMenu.listarEspecialidades().then(function(resultado){
+                    //Retorna a la plantilla para ser leída con ng-repeat
+                    vm.menu = resultado.data;
+                });
                 
 
             },
