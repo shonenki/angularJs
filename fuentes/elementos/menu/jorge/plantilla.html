@@ -3,7 +3,7 @@
 </div>
 
 <!-- Plantilla de Menu (Vista) -->
-<div class="menu" ng-repeat="especialidad in menuVm.menu" ng-if="!menuVm.flagEditaMenu">
+<div class="menu" ng-repeat="especialidad in menuVm.menu" ng-if="!menuVm.editable">
     <div class="especialidad" ng-show="{{especialidad.activo}}">
         <h2>{{especialidad.nombre}}</h2>
         <div ng-repeat="tipo in especialidad.tipos">
@@ -14,12 +14,12 @@
     </div>
 </div>
 
-<div ng-if="!menuVm.flagEditaMenu">
+<div ng-if="!menuVm.editable">
     <input type="button" value="Activar Edición" ng-click="menuVm.editarMenu();" />
 </div>
 
 <!-- Plantilla de Menu (Editable) -->
-<div class="menu" ng-repeat="especialidad in menuVm.menu" ng-if="menuVm.flagEditaMenu">
+<div class="menu" ng-repeat="especialidad in menuVm.menu" ng-if="menuVm.editable">
     <div class="especialidad">
         <input type="text" value="{{especialidad.nombre}}" ng-model="especialidad.nombre" />
         <div ng-repeat="tipo in especialidad.tipos">
@@ -35,6 +35,6 @@
     </div>
 </div>
 
-<div ng-if="menuVm.flagEditaMenu">
+<div ng-if="menuVm.editable">
     <input type="button" value="Modo Vista" ng-click="menuVm.vistaMenu();" />
 </div>

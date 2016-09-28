@@ -1,17 +1,38 @@
 //1
 (function (angular){
     //2
-    angular.module('LaColaFeliz',[]).directive('menu', function(){ //3
+    angular.module('LaColaFeliz',['ui.router'])
+    
+        .config(function($stateProvider,$urlRouterProvider) {
+            var menuListado={
+                name:'menuListado',
+                url:'/menu/listado',
+                template:'<menu></menu>'
+
+            }
+            var menuEdicion={
+                name:'menuEdicion',
+                url:'/menu/edicion',
+                template:'<menu editable="true"></menu>'
+            }
+            
+            $stateProvider.state(menuListado);
+            $stateProvider.state(menuEdicion);
+            
+            //hace las veces de un else o ruta predeterminada
+            $urlRouterProvider.otherwise("menu/listado")
+        })
+    
+        .directive('menu', function(){ //
         return{
-            BindtoController: true,
+            bindtoController: true,
             controllerAs: 'menuVm',
-            controller: function(servicioDeMenu){
+            controller: function(servicioDeMenu, $state){
                 vm = this;
-                vm.flagEditaMenu = false;
                 
                 //Funciones para el flag que cambia el menú a partir del resultado booleano al ng-if
-                vm.editarMenu = function(){ vm.flagEditaMenu = true; };
-                vm.vistaMenu = function(){ vm.flagEditaMenu = false; };
+                vm.editarMenu = function(){ $state.go("menuEdicion") };
+                vm.vistaMenu = function(){ $state.go("menuListado") };
   
                 //Se hace una promesa de devolución de resultado del objeto que se retorna desde el factory           
                 servicioDeMenu.listarEspecialidades().then(function(resultado){
@@ -23,16 +44,20 @@
             },
             restrict: 'E', //4
             templateUrl: 'elementos/menu/jorge/plantilla.html',
-            scope: {} //5 y 6
+            scope: {editable: "<"},
+            
         }
-    }).factory("servicioDeMenu", function($http){ //Inyecto el servicio $http de Angular
+    })
+        
+    .factory("servicioDeMenu", function($http){ //Inyecto el servicio $http de Angular
         //Creo una función que se llama desde el contrlador que leerá el JSON
         function listarEspecialidades(){
             return  $http.get('elementos/menu/jorge/menu.json');
         }
         //Retorna una variable que es igual al resultado de la función
         return {listarEspecialidades:listarEspecialidades}
-    });    
+    }); 
+    
 })(angular);
 
 
@@ -51,6 +76,8 @@
 //BindtoController, scope {} (vacio) y ControllerAs: true. De esta manera aislo el scope padre y creo un scope exclusivo para la misma directiva
 //De esta forma se amplia el poliformismo, debido a que es posible crear los elementos dentro de la directiva sin tener ningún tipo de dependencia externa
 
+//*** 7 ***
+//Se define la variable flagEditaMenu en el scope como 'una sola vìa', por eso el uso //del <, tambièn puede ser @ = verificar documentaciòn
 
 //*** Notas: ***
 //Las directivas se cargan en el DOM una vez que son definidas.
