@@ -14,17 +14,15 @@
                 //Funciones para el flag que cambia el menú a partir del resultado booleano al ng-if
                 vm.editarMenu = function(){ vm.flagEditaMenu = true; };
                 vm.vistaMenu = function(){ vm.flagEditaMenu = false; };
-                activar();
-                
-                function activar(){
+  
                     //Se hace una promesa de devolución de resultado del objeto que se retorna desde el factory           
                     servicioDeMenu.listarEspecialidades().then(function(resultado){
                         //Retorna a la plantilla para ser leída con ng-repeat
                         menu=resultado.data;
+                        return menu;
                     });
-                    //Operador ternario (un if para true o false, donde el priemro siempre es true)
-                    vm.flagEditaMenu ? vm.menu=menu : vm.menu=menu.filter(function(especialidad){return especialidad.activo;})
-                }
+                
+
             },
             restrict: 'E', //4
             templateUrl: 'elementos/menu/jorge/plantilla.html',
@@ -80,3 +78,5 @@
 // Directivas - Controladores - Servicios
 //El factory devuelve un objeto, los servicios devuelven una función constructora.
 //Los servicios propios de AngularJS incluyen $. Ej: $http, $log.
+//Operador ternario (un if para true o false, donde el priemro siempre es true)
+//vm.flagEditaMenu ? vm.menu=menu : vm.menu=menu.filter(function(especialidad){return especialidad.activo;})
